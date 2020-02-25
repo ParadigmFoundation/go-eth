@@ -3,6 +3,7 @@ package eth
 import (
 	"context"
 	"math/big"
+	"os"
 	"testing"
 	"time"
 
@@ -29,6 +30,10 @@ type TestConfig struct {
 }
 
 func TestProvider(t *testing.T) {
+	if os.Getenv("ETHEREUM_JSONRPC_URL") == "" {
+		t.Skip("Set ETHEREUM_JSONRPC_URL env var in order to run this test")
+	}
+
 	cfg := TestConfig{}
 	if err := env.Parse(&cfg); err != nil {
 		t.Fatal(err)
