@@ -1,5 +1,16 @@
 language: go
 
+services:
+  - docker
+
+env:
+  - SNAPSHOT_IMAGE_URL=gcr.io/zaidan-iox-snapshot
+  - ETHEREUM_JSONRPC_URL=http://localhost:8545
+
+before_install:
+  - docker pull $(SNAPSHOT_IMAGE_URL)
+  - docker run -d --rm -p 8545:8545 -p 8546:8546 --name zrx $(SNAPSHOT_IMAGE_URL)
+
 go:
   - 1.13
   - master
