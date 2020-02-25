@@ -1,6 +1,7 @@
 package eth
 
 import (
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -18,6 +19,10 @@ const ZERO_EX_TEST_TOKEN_ADDRESS_STR = "0x871dd7c2b4b25e1aa18728e9d5f2af4c4e431f
 var ZERO_EX_TEST_TOKEN_ADDRESS = common.HexToAddress(ZERO_EX_TEST_TOKEN_ADDRESS_STR)
 
 func TestTokenManager(t *testing.T) {
+	if os.Getenv("ETHEREUM_JSONRPC_URL") == "" {
+		t.Skip("Set ETHEREUM_JSONRPC_URL env var in order to run this test")
+	}
+
 	cfg := TestConfig{}
 	if err := env.Parse(&cfg); err != nil {
 		t.Fatal(err)
