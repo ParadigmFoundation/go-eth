@@ -4,7 +4,7 @@ services:
   - docker
 
 env:
-  - SNAPSHOT_IMAGE_URL=gcr.io/zaidan-iox-snapshot
+  - SNAPSHOT_IMAGE_URL=gcr.io/zaidan-io/0x-snapshot
   - ETHEREUM_JSONRPC_URL=http://localhost:8545
 
 before_install:
