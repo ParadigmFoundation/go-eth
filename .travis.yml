@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - SNAPSHOT_IMAGE_URL=paradigmfoundation/0x-snapshot
+    - SNAPSHOT_IMAGE_URL=paradigmfoundation/0x-snapshot:v3
     - ETHEREUM_JSONRPC_URL=http://localhost:8545
 
 before_install:
