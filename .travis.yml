@@ -1,5 +1,16 @@
 language: go
 
+services:
+  - docker
+
+env:
+  global:
+    - SNAPSHOT_IMAGE_URL=paradigmfoundation/0x-snapshot:v3
+    - ETHEREUM_JSONRPC_URL=http://localhost:8545
+
+before_install:
+  - docker run -d --rm -p 8545:8545 -p 8546:8546 --name zrx $SNAPSHOT_IMAGE_URL
+
 go:
-  - 1.13
+  - 1.14
   - master
